@@ -25,13 +25,13 @@ jobs:
       - name: Build and package x64 and arm64 version for macOS
         run: sh ./scripts/build-macos.sh
 
-      - name: Upload artifacts
+      - name: Upload artifacts (arm64)
         uses: actions/upload-artifact@v2
         with:
           name: MultiRPC-arm64.app
           path: ./macOS Templates/MultiRPC-arm64.app
 
-      - name: Upload artifacts
+      - name: Upload artifacts (x64)
         uses: actions/upload-artifact@v2
         with:
           name: MultiRPC-x64.app
