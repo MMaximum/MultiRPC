@@ -2,9 +2,9 @@ name: Build-macos
 
 on:
   push:
-    branches: [ main ]
+    branches: [ rewrite ]
   pull_request:
-    branches: [ main ]
+    branches: [ rewrite ]
   workflow_dispatch:
 
 jobs:
