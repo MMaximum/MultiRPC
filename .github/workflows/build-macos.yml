@@ -21,7 +21,9 @@ jobs:
         run: |
           pwd
           ls -la
-
+      - name: Build and package x64 and arm64 version for macOS
+        run: sh ./scripts/build-macos.sh
+        
       - name: Upload artifacts (arm64)
         uses: actions/upload-artifact@v2
         with:
