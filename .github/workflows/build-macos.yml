@@ -2,32 +2,37 @@ name: Build-macos
 
 on:
   push:
-    branches: [ rewrite ] 
+    branches: [ main ]
   pull_request:
-    branches: [ rewrite ]  
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Set execute permissions
-        run: chmod +x build-macos.sh
+        run: chmod +x ./scripts/build-macos.sh
+
+      - name: Debug
+        run: |
+          pwd
+          ls -la
 
       - name: Build and package x64 and arm64 version for macOS
         run: sh ./scripts/build-macos.sh
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
         with:
           name: MultiRPC-arm64.app
           path: ./macOS Templates/MultiRPC-arm64.app
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
         with:
           name: MultiRPC-x64.app
           path: ./macOS Templates/MultiRPC-x64.app
