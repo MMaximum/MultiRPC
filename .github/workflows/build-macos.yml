@@ -2,9 +2,9 @@ name: Build-macos
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ rewrite ] 
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ rewrite ]  
   workflow_dispatch:
 
 jobs:
@@ -15,6 +15,9 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
+
+      - name: Set execute permissions
+        run: chmod +x build-macos.sh
 
       - name: Build and package x64 and arm64 version for macOS
         run: sh ./scripts/build-macos.sh
