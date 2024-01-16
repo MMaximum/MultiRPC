@@ -1,4 +1,7 @@
-#!/bin/bash -e
+#!/bin/bash
+
+set -x  # Enable debugging
+set -e  # Exit immediately if a command exits with a non-zero status
 
 name: Build-macos
 
