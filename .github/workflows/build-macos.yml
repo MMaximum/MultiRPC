@@ -17,7 +17,7 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Build and package x64 and arm64 version for macOS
-        run: sh build-macos.sh
+        run: sh ./scripts/build-macos.sh
 
       - uses: actions/upload-artifact@v2
         with:
